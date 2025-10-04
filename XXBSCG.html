@@ -47,6 +47,13 @@
     .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.15);padding:6px 10px;border-radius:999px;font-size:13px;color:#f1f5f9}
     .title{font-size:44px;line-height:1.15;margin:14px 0 8px;font-weight:800}
     .subtitle{color:#e2e8f0;margin:0 0 18px;font-size:18px}
+    .subtitle2 {
+  font-size: 35px;       /* between title (≈40–44px) and subtitle (≈18px) */
+  font-weight: 500;
+  color: #e2e8f0;        /* same tone as subtitle */
+  margin: 4px 0 14px;    /* small gap above and below */
+  text-shadow: 0 2px 6px rgba(0,0,0,.5); /* keeps it readable on banner */
+}
     .cta{display:flex;gap:12px;flex-wrap:wrap}
     .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:rgba(0,0,0,.45);color:#fff}
     .btn.primary{background:linear-gradient(180deg,var(--accent),#1f7cd6);border-color:transparent;color:#fff;box-shadow:0 10px 24px rgba(62,166,255,.35)}
@@ -67,6 +74,15 @@
   justify-content: center;
 }
 
+.hero{
+  background-attachment: fixed;   /* parallax-like */
+  background-position: center 0;  /* make sure a baseline is set */
+}
+
+
+.card p {
+  text-align: justify;
+}
 
     section{padding:48px 0;border-top:1px solid rgba(255,255,255,.06)}
     h2{font-size:28px;margin:.2rem 0 1rem}
@@ -87,6 +103,62 @@
     .tag{display:inline-block;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);padding:4px 8px;border-radius:999px;font-size:12px;margin:2px 6px 0 0}
     .center{text-align:center}
     .map{width:100%;aspect-ratio:16/9;border:0;border-radius:var(--radius);filter:saturate(90%)}
+/* Compact grid list for previous editions */
+.prev-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 10px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.prev-grid li {
+  text-align: center;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 10px;
+  padding: 8px 0;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  transition: all 0.15s ease;
+}
+
+.prev-grid li a {
+  display: block;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.prev-grid li:hover {
+  transform: translateY(-2px);
+  background: rgba(255,255,255,.08);
+  border-color: rgba(255,255,255,.14);
+  color: var(--accent);
+}
+
+/* Section separator banners */
+.separator {
+  height: 150px; 
+  background: url('separator.jpg') center/cover no-repeat;
+  border-top: 1px solid rgba(255,255,255,.06);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  position: relative;
+}
+.separator::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.35));
+}
+.separator {
+  background-attachment: fixed;
+}
+.separator.galaxies { background-image: url('galaxies.png'); }
+.separator.gravity { background-image: url('gravity.png'); }
+.separator.waves { background-image: url('waves.png'); }
+
+
   </style>
 </head>
 <body>
@@ -104,9 +176,9 @@
           <li><a href="#committee">Committee</a></li>
           <li><a href="#lectures">Lectures & Topics</a></li>
           <li><a href="#program">Program</a></li>
-          <li><a href="#registration">Registration</a></li>
           <li><a href="#posters">Confirmed Posters</a></li>
           <li><a href="#presentations">Presentations</a></li>
+          <li><a href="#registration">Registration</a></li>
           <li><a href="#previous">Previous Editions</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
@@ -119,7 +191,8 @@
     <div class="wrap">
       <div>
         <span class="badge">Centro Brasileiro de Pesquisas Físicas • Rio de Janeiro</span>
-        <h1 class="title">XX Brazilian School of Cosmology & Gravitation</h1>
+        <h1 class="title">Brazilian School of Cosmology & Gravitation</h1>
+        <h2 class="subtitle2">XX Edition</h2>
         <p class="subtitle">September 14–18, 2026</p>
         <div class="cta">
           <a class="btn primary" href="#registration">Register</a>
@@ -146,10 +219,8 @@
         <div class="card">
           <p>
              The Brazilian School of Cosmology and Gravitation (BSCG) is a traditional international school for graduate students, postdocs and researchers in the fields of Gravitation, Cosmology, and related areas, featuring foundational courses, as well as advanced seminars. It has been held in Brazil since 1978, and it has since played a fundamental role in the formation and development of research groups in Cosmology, Gravitation and Astrophysics in Brazil, as well as many international scientific collaborations. Some of the past speakers of the school were Evgeny Lifshitz, Bryce DeWitt, Yvone de Choquet-Bruhat, Rocky Kolb, Claudio Teitelboim, George Ellis, John Ellis, David Schram, George Smoot, Werner Israel, Larry Ford, Robert Brandenberger, Slava Mukhanov, Jorge Pullin, Luca Amendola, William Unruh, among many others.
-
-This edition...
           </p>
-          <p class="muted">Use this space to set the historical context and this year’s theme. Keep it brief and link to PDFs if needed.</p>
+          <p class="muted">This edition...</p>
         </div>
         <div class="card">
           <strong>Location & Dates</strong>
@@ -163,6 +234,8 @@ This edition...
       </div>
     </div>
   </section>
+
+<div class="separator galaxies"></div>
 
   <!-- Committee -->
   <section id="committee">
@@ -192,6 +265,8 @@ This edition...
     </div>
   </section>
 
+<div class="separator waves"></div>
+
   <!-- Lectures & Topics -->
   <section id="lectures">
     <div class="wrap">
@@ -211,10 +286,6 @@ This edition...
             <li>Late-Universe Tensions (H₀, S₈)</li>
             <li>String Theory & Quantum Gravity</li>
           </ul>
-        </div>
-        <div class="card">
-          <strong>Audience</strong>
-          <p class="muted">Senior undergrads, grad students, postdocs, and researchers in Physics, Mathematics, and Astronomy.</p>
         </div>
       </div>
     </div>
@@ -245,31 +316,6 @@ This edition...
             <tr><td>17:20</td><td>Seminar – Speaker E: Title</td></tr>
           </tbody>
         </table>
-      </div>
-    </div>
-  </section>
-
-  <!-- Registration -->
-  <section id="registration">
-    <div class="wrap">
-      <h2>Registration</h2>
-      <div class="grid two">
-        <div class="card">
-          <p class="notice"><strong>INSCRIÇÕES ABERTAS</strong> — Limited seats. Early-bird until Aug 15, 2026.</p>
-          <p>To register, fill the form and upload the payment receipt. Students may request a fee waiver.</p>
-          <p>
-            <a class="btn primary" href="#">Open Registration Form</a>
-            <a class="btn" href="#upload">Upload Receipt</a>
-          </p>
-        </div>
-        <div class="card">
-          <strong>Fees</strong>
-          <ul class="muted">
-            <li>Students: R$ XXX</li>
-            <li>Postdocs: R$ XXX</li>
-            <li>Faculty/Researchers: R$ XXX</li>
-          </ul>
-        </div>
       </div>
     </div>
   </section>
@@ -309,18 +355,56 @@ This edition...
     </div>
   </section>
 
-  <!-- Previous Editions -->
-  <section id="previous">
+<div class="separator gravity"></div>
+
+  <!-- Registration -->
+  <section id="registration">
     <div class="wrap">
-      <h2>Previous Editions</h2>
-      <div class="grid three">
-        <a class="card" href="#">2018 — Frankfurt</a>
-        <a class="card" href="#">2004 — CBPF</a>
-        <a class="card" href="#">2002 — ICRA</a>
+      <h2>Registration</h2>
+      <div class="grid two">
+        <div class="card">
+          <p class="notice"><strong>REGISTRATION IS OPEN</strong> — Early-bird until Aug 15, 2026.</p>
+          <p>To register, fill the form and upload the payment receipt. Students may request a fee waiver.</p>
+          <p>
+            <a class="btn primary" href="#">Open Registration Form</a>
+            <a class="btn" href="#upload">Upload Receipt</a>
+          </p>
+        </div>
+        <div class="card">
+          <strong>Fees</strong>
+          <ul class="muted">
+            <li>Undegraduate students: R$ 100,00</li>
+            <li>Graduate Students and Postdocs: R$ 200,00</li>
+            <li>Faculty/Researchers: R$ 400,00</li>
+          </ul>
+        </div>
       </div>
-      <p class="muted" style="margin-top:10px">Add more links as needed.</p>
     </div>
   </section>
+
+  <!-- Previous Editions -->
+<section id="previous">
+  <div class="wrap">
+    <h2>Some of the Previous Editions</h2>
+    <ul class="prev-grid card">
+      <li><a href="https://eventos.cbpf.br/xix-bscg/inicio" target="_blank">2024</a></li>
+      <li><a href="https://mesonpiold.cbpf.br/XVIII-bscg/" target="_blank">2022</a></li>
+      <li><a href="https://hyperspace.uni-frankfurt.de/2018/03/30/brazilian-school-of-cosmology-and-gravitation-bscg-xvii/" target="_blank">2018</a></li>
+      <li><a href="https://cbpf.br/cosmogra/indexbscg.htm" target="_blank">2004</a></li>
+      <li><a href="https://cbpf.br/cosmogra/Xescola/Xschool.html" target="_blank">2002</a></li>
+      <li><a href="https://cbpf.br/cosmogra/Schools/IXSchool.html" target="_blank">1998</a></li>
+      <li><a href="https://cbpf.br/cosmogra/Schools/VIIISchool.html" target="_blank">1995</a></li>
+      <li><a href="https://cbpf.br/cosmogra/Schools/VIISchool.html" target="_blank">1993</a></li>
+      <li><a href="https://cbpf.br/cosmogra/Schools/VISchool.html" target="_blank">1989</a></li>
+      <li><a href="https://cbpf.br/cosmogra/Schools/VSchool.html" target="_blank">1987</a></li>
+      <li><a href="https://cbpf.br/cosmogra/Schools/IVSchool.html" target="_blank">1984</a></li>
+      <li><a href="https://cbpf.br/cosmogra/Schools/IIISchool.html" target="_blank">1982</a></li>
+      <li><a href="https://cbpf.br/cosmogra/Schools/IISchool.html" target="_blank">1979</a></li>
+    </ul>
+  </div>
+</section>
+
+</section>
 
   <!-- Contact & Venue -->
   <section id="contact">
