@@ -207,31 +207,33 @@ header {
 </head>
 
 <script>
-  (function () {
-    var path = location.pathname.toLowerCase();
-    var isEN = path.includes("../en/");
-    var isPT = path.includes("../pt/");
+(function () {
+  var path = location.pathname.toLowerCase();
+  var isEN = path.includes("/en/");
+  var isPT = path.includes("/pt/");
 
-    // Works for both user sites and project sites (username.github.io/repo/)
-    function base() {
-      var parts = location.pathname.split("/");
-      // if project site, pathname is /repo/... → return "/repo/"
-      if (parts.length > 2 && parts[1]) return "/" + parts[1] + "/";
-      // user site or custom domain
-      return "/";
+  function base() {
+    var parts = location.pathname.split("/").filter(Boolean);
+    if (parts.length && parts[0] !== "en" && parts[0] !== "pt") {
+      return "/" + parts[0] + "/";
     }
+    return "/";
+  }
 
-    var root = base();
-    var aEN = document.getElementById("to-en");
-    var aPT = document.getElementById("to-pt");
-    if (aEN) aEN.setAttribute("href", root + "en/");
-    if (aPT) aPT.setAttribute("href", root + "pt/");
+  var root = base();
 
-    // highlight active
-    if (isEN && aEN) aEN.classList.add("active");
-    if (isPT && aPT) aPT.classList.add("active");
-  })();
+  var aEN = document.getElementById("to-en");
+  var aPT = document.getElementById("to-pt");
+  if (!aEN || !aPT) return;
+
+  aEN.setAttribute("href", root + "en/");
+  aPT.setAttribute("href", root + "pt/");
+
+  if (isEN) aEN.classList.add("active");
+  if (isPT) aPT.classList.add("active");
+})();
 </script>
+
 
 
 <body>
