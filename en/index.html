@@ -209,8 +209,8 @@ header {
 <script>
   (function () {
     var path = location.pathname.toLowerCase();
-    var isEN = path.includes("/en/");
-    var isPT = path.includes("/pt/");
+    var isEN = path.includes("../en/");
+    var isPT = path.includes("../pt/");
 
     // Works for both user sites and project sites (username.github.io/repo/)
     function base() {
@@ -245,7 +245,7 @@ header {
 
     <!-- Language toggle -->
     <div class="lang-toggle-inline" aria-label="Language">
-      <a id="to-en" href="/en/">EN</a> | <a id="to-pt" href="/pt/">PT</a>
+      <a id="to-en" href="../en/">EN</a> | <a id="to-pt" href="../pt/">PT</a>
     </div>
 
     <button class="menu-btn" aria-expanded="false" aria-controls="menu">☰ Menu</button>
