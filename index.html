@@ -1,0 +1,24 @@
+<!-- /index.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="refresh" content="0; url=en/" />
+  <script>
+    // Redirect by browser language:
+    (function () {
+      try {
+        var lang = (navigator.language || navigator.userLanguage || "en").toLowerCase();
+        if (lang.startsWith("pt")) location.replace("pt/");
+        else location.replace("en/");
+      } catch (e) {
+        // Fallback to English if JS fails
+        location.replace("en/");
+      }
+    })();
+  </script>
+  <title>Redirecting…</title>
+</head>
+<body>Redirecting…</body>
+</html>
+

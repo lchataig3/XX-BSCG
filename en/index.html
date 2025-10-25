@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>XX BSCG - CBPF 2026</title>
+  <meta name="description" content="XX BSCG template – mobile-friendly, accessible, and lightweight." />  <style>
+    :root{
+      --bg:#0b0d12;
+      --panel:#121623;
+      --accent:#3ea6ff;
+      --accent-2:#00d0b6;
+      --muted:#94a3b8;
+      --text:#e5ecf4;
+      --warn:#ffd166;
+      --maxw:1200px;
+      --radius:16px;
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,'Helvetica Neue',Arial,sans-serif;color:var(--text);background:linear-gradient(180deg,#0a0c12 0%, #0b0d12 50%, #0a0c12 100%)}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+
+    header{position:sticky;top:0;z-index:50;background:rgba(10,12,18,.8);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav{display:flex;align-items:center;justify-content:space-between;min-height:64px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand img{width:42px;height:42px;border-radius:50%;box-shadow:var(--shadow)}
+    .brand strong{font-weight:800;letter-spacing:.3px}
+    nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
+    nav a{display:inline-block;padding:10px 8px;border-radius:8px}
+    nav a:hover{background:rgba(255,255,255,.06)}
+
+    .menu-btn{display:none;border:1px solid rgba(255,255,255,.15);background:transparent;color:var(--text);padding:8px 12px;border-radius:10px}
+    @media (max-width:880px){
+      nav ul{display:none;position:absolute;top:64px;left:0;right:0;background:var(--panel);padding:14px;border-bottom:1px solid rgba(255,255,255,.08)}
+      nav ul.open{display:grid;gap:6px}
+      .menu-btn{display:inline-flex;align-items:center;gap:8px}
+    }
+
+    /* Hero with banner image */
+    .hero{padding:80px 0 40px;background:url('../assets/banner.png') center/cover no-repeat;position:relative;color:#fff;text-shadow:0 2px 6px rgba(0,0,0,.6)}
+    .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.4))}
+    .hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
+    .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.15);padding:6px 10px;border-radius:999px;font-size:13px;color:#f1f5f9}
+    .title{font-size:44px;line-height:1.15;margin:14px 0 8px;font-weight:800}
+    .subtitle{color:#e2e8f0;margin:0 0 18px;font-size:18px}
+    .subtitle2 {
+  font-size: 35px;       /* between title (≈40–44px) and subtitle (≈18px) */
+  font-weight: 500;
+  color: #e2e8f0;        /* same tone as subtitle */
+  margin: 4px 0 14px;    /* small gap above and below */
+  text-shadow: 0 2px 6px rgba(0,0,0,.5); /* keeps it readable on banner */
+}
+    .cta{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:rgba(0,0,0,.45);color:#fff}
+    .btn.primary{background:linear-gradient(180deg,var(--accent),#1f7cd6);border-color:transparent;color:#fff;box-shadow:0 10px 24px rgba(62,166,255,.35)}
+    .hero-card{background:rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.15);padding:16px;border-radius:var(--radius);box-shadow:var(--shadow)}
+    .hero-card h3{margin:.2rem 0 .6rem;font-size:18px}
+
+    @media (max-width:880px){
+      .hero .wrap{grid-template-columns:1fr}
+      .title{font-size:32px}
+    }
+
+.hero .wrap {
+  text-align: center;
+  justify-content: center;
+  grid-template-columns: 1fr; /* optional: single column */
+}
+.hero .title, .hero .subtitle, .hero .cta {
+  justify-content: center;
+}
+
+.hero{
+  background-attachment: fixed;   /* parallax-like */
+  background-position: center 0;  /* make sure a baseline is set */
+}
+
+
+.card p {
+  text-align: justify;
+}
+
+    section{padding:48px 0;border-top:1px solid rgba(255,255,255,.06)}
+    h2{font-size:28px;margin:.2rem 0 1rem}
+    .grid{display:grid;gap:16px}
+    .two{grid-template-columns:1fr 1fr}
+    .three{grid-template-columns:repeat(3,1fr)}
+    .card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:18px;border-radius:var(--radius)}
+    .muted{color:var(--muted)}
+    .notice{background:rgba(255,209,102,.08);border:1px dashed rgba(255,209,102,.5);padding:12px;border-radius:12px}
+    @media (max-width:880px){.two,.three{grid-template-columns:1fr}}
+
+    table{width:100%;border-collapse:collapse}
+    th,td{padding:10px;border-bottom:1px solid rgba(255,255,255,.08);vertical-align:top}
+    th{text-align:left;color:#cbd5e1}
+
+    footer{padding:36px 0;background:#0a0c12;border-top:1px solid rgba(255,255,255,.06);color:#9fb1c7}
+
+    .tag{display:inline-block;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);padding:4px 8px;border-radius:999px;font-size:12px;margin:2px 6px 0 0}
+    .center{text-align:center}
+    .map{width:100%;aspect-ratio:16/9;border:0;border-radius:var(--radius);filter:saturate(90%)}
+/* Compact grid list for previous editions */
+.prev-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 10px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.prev-grid li {
+  text-align: center;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 10px;
+  padding: 8px 0;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  transition: all 0.15s ease;
+}
+
+.prev-grid li a {
+  display: block;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.prev-grid li:hover {
+  transform: translateY(-2px);
+  background: rgba(255,255,255,.08);
+  border-color: rgba(255,255,255,.14);
+  color: var(--accent);
+}
+
+/* Section separator banners */
+.separator {
+  height: 150px; 
+  background: url('separator.jpg') center/cover no-repeat;
+  border-top: 1px solid rgba(255,255,255,.06);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  position: relative;
+}
+.separator::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.35));
+}
+.separator {
+  background-attachment: fixed;
+}
+.separator.galaxies { background-image: url('../assets/galaxies.png'); }
+.separator.gravity { background-image: url('../assets/gravity.png'); }
+.separator.waves { background-image: url('../assets/waves.png'); }
+
+/* Make the header row flexible and tidy */
+header .wrap.nav {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Keep brand items aligned */
+header .brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Language toggle lives between brand and menu button */
+.lang-toggle-inline {
+  margin-left: auto;                 /* push it to the right */
+  font: 14px/1.2 system-ui, sans-serif;
+  white-space: nowrap;
+}
+
+.lang-toggle-inline a {
+  text-decoration: none;
+  font-weight: 600;
+  margin: 0 4px;
+}
+
+.lang-toggle-inline .active {
+  text-decoration: underline;
+}
+
+/* Keep it readable over sticky headers if you have them */
+header {
+  position: relative;
+  z-index: 10;
+}
+
+/* Mobile: make sure toggle stays visible next to the menu button */
+@media (max-width: 720px) {
+  .lang-toggle-inline { order: 2; }
+  .menu-btn { order: 3; }
+  nav { order: 4; }
+}
+
+
+  </style>
+</head>
+
+<script>
+  (function () {
+    var path = location.pathname.toLowerCase();
+    var isEN = path.includes("/en/");
+    var isPT = path.includes("/pt/");
+
+    // Works for both user sites and project sites (username.github.io/repo/)
+    function base() {
+      var parts = location.pathname.split("/");
+      // if project site, pathname is /repo/... → return "/repo/"
+      if (parts.length > 2 && parts[1]) return "/" + parts[1] + "/";
+      // user site or custom domain
+      return "/";
+    }
+
+    var root = base();
+    var aEN = document.getElementById("to-en");
+    var aPT = document.getElementById("to-pt");
+    if (aEN) aEN.setAttribute("href", root + "en/");
+    if (aPT) aPT.setAttribute("href", root + "pt/");
+
+    // highlight active
+    if (isEN && aEN) aEN.classList.add("active");
+    if (isPT && aPT) aPT.classList.add("active");
+  })();
+</script>
+
+
+<body>
+  <!-- Header / Nav -->
+<header>
+  <div class="wrap nav">
+    <div class="brand">
+      <img src="../assets/logo.png" alt="Conference logo" onerror="this.style.visibility='hidden'"/>
+      <strong>XX BSCG 2026</strong>
+    </div>
+
+    <!-- Language toggle -->
+    <div class="lang-toggle-inline" aria-label="Language">
+      <a id="to-en" href="/en/">EN</a> | <a id="to-pt" href="/pt/">PT</a>
+    </div>
+
+    <button class="menu-btn" aria-expanded="false" aria-controls="menu">☰ Menu</button>
+
+    <nav>
+      <ul id="menu" aria-label="Primary">
+        <li><a href="#about">About</a></li>
+        <li><a href="#program">Program</a></li>
+        <li><a href="#posters">Posters</a></li>
+        <li><a href="#registration">Registration</a></li>
+        <li><a href="#committee">Committee</a></li>
+        <li><a href="#previous">Previous Editions</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+  <!-- Hero with banner image -->
+  <section class="hero" id="home" aria-label="Hero">
+    <div class="wrap">
+      <div>
+        <span class="badge">Centro Brasileiro de Pesquisas Físicas • Rio de Janeiro</span>
+        <h1 class="title">Brazilian School of Cosmology & Gravitation</h1>
+        <h2 class="subtitle2">XX Edition</h2>
+        <p class="subtitle">September 14–18, 2026</p>
+        <div class="cta">
+          <a class="btn primary" href="#registration">Register</a>
+          <a class="btn" href="#about">About the Event</a>
+        </div>
+      </div>
+      <!--<aside class="hero-card" aria-label="Highlights">
+        <h3>Highlights</h3>
+        <ul style="margin:0 0 10px 18px">
+          <li>Mini-courses on early Universe & quantum gravity</li>
+          <li>Invited talks by leading researchers</li>
+          <li>Poster session & best-poster award</li>
+        </ul>
+        <div class="notice">Registrations open</div>
+      </aside>-->
+    </div>
+  </section>
+
+<!-- About -->
+<section id="about">
+  <div class="wrap">
+    <h2>About the Event</h2>
+
+    <!-- Duas colunas: texto introdutório à esquerda e 'This edition...' à direita -->
+    <div class="grid two">
+      <div class="card">
+        <p>
+          The Brazilian School of Cosmology and Gravitation (BSCG) is a traditional international school for graduate students, postdocs and researchers in the fields of Gravitation, Cosmology, and related areas, featuring foundational courses, as well as advanced seminars. It has been held in Brazil since 1978, and it has since played a fundamental role in the formation and development of research groups in Cosmology, Gravitation and Astrophysics in Brazil, as well as many international scientific collaborations. Some of the past speakers of the school were Evgeny Lifshitz, Bryce DeWitt, Yvone de Choquet-Bruhat, Rocky Kolb, Claudio Teitelboim, George Ellis, John Ellis, David Schram, George Smoot, Werner Israel, Larry Ford, Robert Brandenberger, Slava Mukhanov, Jorge Pullin, Luca Amendola, William Unruh, Alexei Starobinsky, François Bouchet, among many others.
+        </p>
+      </div>
+
+      <div class="card">
+        <p>
+          This edition will continue to contemplate aspects of the quantum and early Universe, while also discussing new cosmological probes and observational findings. Carlo Rovelli, Guilherme Pimentel, Elisabeth Krause and Mairi Sakellariadou will be giving four lectures each on: Quantum Gravity; Cosmological Bootstrap; Observational Cosmology and the LSST survey; and Gravitational Waves Cosmology, respectively. We will also have seminars from Pablo Fosalba (Euclid), Yi-Fu Cai (Chinese new cosmological facilities), Cliff Burgess (Effective Field Theories and Cosmology), Farinaldo Queiroz (Dark Matter searches), Jailson Alcaniz (Tests of Cosmic Homogeneity) and Karín Menendez-Delmestre (The Astrophysics of Nearby Galaxies). Additionally, Nabila Aghanim (Next generation of CMB surveys), Eleonora di Valentino (Cosmic Tensions and the DESI results), Jane Rigby (James Webb Space Telescope) and Thibault Damour (The History of the Two-Body problem) are yet to be confirmed.
+        </p>
+      </div>
+    </div>
+
+    <!-- Divisor horizontal -->
+    <hr style="margin: 1.5rem 0; border: 0; border-top: 1px solid #ccc; opacity: 0.6;">
+
+    <!-- Location & Dates abaixo -->
+    <div class="card" style="text-align: center; max-width: 400px; margin: 0 auto; padding: 0.8rem 1rem;">
+      <strong>Location & Dates</strong>
+      <div style="width: 350px; margin: 0 auto; text-align: center;">
+      <p>
+        Centro Brasileiro de Pesquisas Físicas (CBPF)<br>
+        Rua Dr. Xavier Sigaud, 150, Rio de Janeiro, Brazil<br>
+        September 14–18, 2026
+      </p>
+      </div>
+      <div>
+        <span class="tag">In person</span>
+        <span class="tag">EN language</span>
+        <span class="tag">Coffee breaks</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Program -->
+<section id="program">
+  <div class="wrap">
+    <h2>Program</h2>
+    <div class="card">
+      <p class="muted">* To be confirmed</p>
+      <table aria-label="Program schedule">
+        <thead>
+          <tr>
+            <th style="width:120px">Time</th>
+            <th>Monday (Sep 12)</th>
+            <th>Tuesday (Sep 13)</th>
+            <th>Wednesday (Sep 14)</th>
+            <th>Thursday (Sep 15)</th>
+            <th>Friday (Sep 16)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>08:30</td><td>Registration</td><td> -- </td><td> -- </td><td> -- </td><td> -- </td></tr>
+          <tr><td>09:00</td><td>Carlo Rovelli - I</td><td>Carlo Rovelli - II</td><td> Guilherme Pimentel - III </td><td> Carlo Rovelli - IV </td><td> Farinaldo Queiroz </td></tr>
+          <tr><td>10:00</td><td>Coffee break</td><td>Coffee break</td><td> Coffee Break </td><td> Coffee Break </td><td> Coffee Break </td></tr>
+          <tr><td>10:30</td><td>Guilherme Pimentel - I</td><td> Guilherme Pimentel - II</td><td> Carlo Rovelli - III </td><td> Guilherme Pimentel - IV </td><td> Elisabeth Krause - IV </td></tr>
+          <tr><td>11:30</td><td>Jane Rigby *</td><td> Nabila Aghanim * </td><td> Karín Menendez-Delmestre </td><td> Eleonora di Valentino * </td><td> Thibault Damour * </td></tr>
+          <tr><td>12:30</td><td>Lunch</td><td>Lunch</td><td> Lunch </td><td> Lunch </td><td> Lunch </td></tr>
+          <tr><td>14:00</td><td>Elisabeth Krause - I</td><td> Elisabeth Krause - II</td><td> Elisabeth Krause - III </td><td> Mairi Sakellariadou - IV </td><td> Pablo Fosalba </td></tr>
+          <tr><td>15:00</td><td>Mairi Sakellariadou - I</td><td>Mairi Sakellariadou - II</td><td> Mairi Sakellariadou - III </td><td> Yi-Fu Cai </td><td> Cliff Burgess </td></tr>
+          <tr><td>16:00</td><td>Flash Talks</td><td>Flash Talks</td><td> Flash Talks </td><td> Flash Talks </td><td> Flash Talks </td></tr>
+          <tr><td>16:20</td><td>Coffee break</td><td>Coffee break</td><td> Coffee Break </td><td> Coffee Break </td><td> Coffee Break </td></tr>
+          <tr><td>16:50</td><td>Pablo Fosalba</td><td> Colloquium - Carlo Rovelli </td><td> Round Table </td><td> Colloquium - Elisabeth Krause </td><td> Jailson Alcaniz </td></tr>
+          <tr><td>17:50</td><td> Welcome Reception </td><td> -- </td><td> -- </td><td> -- </td><td> -- </td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Lectures and Seminars Section -->
+    <div class="card" style="margin-top: 2em;">
+      <div style="display: flex; flex-wrap: wrap; gap: 2rem;">
+        <!-- Lectures -->
+        <div style="flex: 1; min-width: 280px;">
+          <h3>Lectures</h3>
+          <ul>
+            <li><b>Carlo Rovelli</b> — Quantum Gravity</li>
+            <li><b>Guilherme Pimentel</b> — Cosmological Bootstrap</li>
+            <li><b>Elisabeth Krause</b> — Observational Cosmology and the LSST survey</li>
+            <li><b>Mairi Sakellariadou</b> — Gravitational Waves Cosmology</li>
+          </ul>
+        </div>
+
+        <!-- Seminars -->
+        <div style="flex: 1; min-width: 280px;">
+          <h3>Seminars</h3>
+          <ul>
+            <li><b>Pablo Fosalba</b> — Euclid</li>
+            <li><b>Yi-Fu Cai</b> — Chinese New Cosmological Facilities</li>
+            <li><b>Cliff Burgess</b> — Effective Field Theories and Cosmology</li>
+            <li><b>Farinaldo Queiroz</b> — Dark Matter Searches</li>
+            <li><b>Jailson Alcaniz</b> — Tests of Cosmic Homogeneity</li>
+            <li><b>Karín Menendez-Delmestre</b> — The Astrophysics of Nearby Galaxies</li>
+            <li><b>Nabila Aghanim *</b> — Next Generation of CMB Surveys</li>
+            <li><b>Eleonora di Valentino *</b> — Cosmic Tensions and DESI Results</li>
+            <li><b>Jane Rigby *</b> — James Webb Space Telescope</li>
+            <li><b>Thibault Damour *</b> — The History of the Two-Body Problem</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Confirmed Posters -->
+  <section id="posters">
+    <div class="wrap">
+      <h2>Flash Talks / Posters</h2>
+      <div class="card">
+        <ul>
+          <li> In this edition participants will be invited to submit their posters to be displayed at the coffee break area, when discussion regarding the posters will also take place. We also invite the participants interested in submitting posters to present a one-slide Flash Talk for 2-3 minutes at the corresponding time slot available in the program schedule. Further information regarding submissions will be soon available.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Registration -->
+  <section id="registration">
+    <div class="wrap">
+      <h2>Registration</h2>
+      <div class="grid two">
+        <div class="card">
+          <p class="notice"><strong>REGISTRATION WILL SOON OPEN</strong> — Early-bird until Aug 15, 2026.</p>
+          <p>To register, fill the form and upload the payment receipt. Students may request a fee waiver.</p>
+          <p>
+            <a class="btn primary" href="#">Open Registration Form</a>
+            <a class="btn" href="#upload">Upload Receipt</a>
+          </p>
+        </div>
+        <div class="card">
+          <strong>Fees</strong>
+          <ul class="muted">
+            <li>Undegraduate students: R$ 60,00</li>
+            <li>Graduate Students and Postdocs: R$ 150,00</li>
+            <li>Faculty/Researchers: R$ 300,00</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<div class="separator galaxies"></div>
+
+  <!-- Committee -->
+  <section id="committee">
+    <div class="wrap">
+      <h2>Scientific Committee</h2>
+      <div class="grid two">
+        <div class="card">
+          <strong>Director</strong>
+          <p>Nelson Pinto-Neto — Centro Brasileiro de Pesquisas Físicas, Rio de Janeiro, Brazil</p>
+          <strong>Local Organization</strong>
+          <ul>
+            <li>Martín Makler — Centro Brasileiro de Pesquisas Físicas, Rio de Janeiro, Brazil</li>
+            <li>Guilherme Brando — Centro Brasileiro de Pesquisas Físicas, Rio de Janeiro, Brazil</li>
+            <li>Leonardo Chataignier — Centro Brasileiro de Pesquisas Físicas, Rio de Janeiro, Brazil</li>
+            <li>Mário Novello — Centro Brasileiro de Pesquisas Físicas, Rio de Janeiro, Brazil</li>
+          </ul>
+        </div>
+        <div class="card">
+          <strong>External Members</strong>
+          <ul>
+            <li>Júlio César Fabris — Universidade Federal do Espírito Santo, Espírito Santo, Brazil</li>
+            <li>Robert Brandenberger — McGill University, Montreal, Canada</li>
+            <li>Edward Kolb — Chicago, United States of America</li>
+            <li>Sandro Dias Pinto Vitenti — Universidade Estadual de Londrina</li>
+            <li>Farinaldo Queiroz — Universidade Federal do Rio Grande do Norte</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Previous Editions -->
+<section id="previous">
+  <div class="wrap">
+    <h2>Some of the Previous Editions</h2>
+    <ul class="prev-grid card">
+      <li><a href="https://eventos.cbpf.br/xix-bscg/inicio" target="_blank">2024</a></li>
+      <li><a href="https://mesonpiold.cbpf.br/XVIII-bscg/" target="_blank">2022</a></li>
+      <li><a href="https://hyperspace.uni-frankfurt.de/2018/03/30/brazilian-school-of-cosmology-and-gravitation-bscg-xvii/" target="_blank">2018</a></li>
+      <li><a href="https://cbpf.br/cosmogra/indexbscg.htm" target="_blank">2004</a></li>
+      <li><a href="https://cbpf.br/cosmogra/Xescola/Xschool.html" target="_blank">2002</a></li>
+      <li><a href="https://cbpf.br/cosmogra/Schools/IXSchool.html" target="_blank">1998</a></li>
+      <li><a href="https://cbpf.br/cosmogra/Schools/VIIISchool.html" target="_blank">1995</a></li>
+      <li><a href="https://cbpf.br/cosmogra/Schools/VIISchool.html" target="_blank">1993</a></li>
+      <li><a href="https://cbpf.br/cosmogra/Schools/VISchool.html" target="_blank">1989</a></li>
+      <li><a href="https://cbpf.br/cosmogra/Schools/VSchool.html" target="_blank">1987</a></li>
+      <li><a href="https://cbpf.br/cosmogra/Schools/IVSchool.html" target="_blank">1984</a></li>
+      <li><a href="https://cbpf.br/cosmogra/Schools/IIISchool.html" target="_blank">1982</a></li>
+      <li><a href="https://cbpf.br/cosmogra/Schools/IISchool.html" target="_blank">1979</a></li>
+    </ul>
+  </div>
+</section>
+
+</section>
+
+  <!-- Contact & Venue -->
+  <section id="contact">
+    <div class="wrap">
+      <h2>Contact</h2>
+      <div class="grid two">
+        <div class="card">
+          <p><strong>Email:</strong> <a href="mailto:nelsonpn@cbpf.br">nelsonpn@cbpf.br</a></p>
+          <p><strong>Phone:</strong> +55 21 2141-7215</p>
+          <p><strong>Address:</strong> Rua Dr. Xavier Sigaud, 150 – Urca, Rio de Janeiro – RJ</p>
+        </div>
+        <div class="card">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3673.888813460681!2d-43.17618772463356!3d-22.95432157922166!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x997ff81051b73f%3A0x4570cd1fa55b72e7!2sCentro%20Brasileiro%20de%20Pesquisas%20F%C3%ADsicas!5e0!3m2!1sen!2sbr!4v1759421464170!5m2!1sen!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+      <div class="center muted" style="margin-top:10px">Access to administrative area: <a href="#admin">Login</a></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap center">
+      © 2026
+    </div>
+  </footer>
+
+  <script>
+    const btn = document.querySelector('.menu-btn');
+    const menu = document.getElementById('menu');
+    btn?.addEventListener('click', () => {
+      const open = menu.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+
+    menu?.addEventListener('click', (e) => {
+      if(e.target.tagName === 'A' && menu.classList.contains('open')){
+        menu.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  </script>
+</body>
+</html>
+
